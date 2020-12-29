@@ -40,13 +40,6 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-//simple route to test connect to server
-app.use('/', (req, res) => {
-    res.json({
-        msg: "Hello everyone!"
-    });
-});
-
 
 //config PORT and setup server
 const PORT = process.env.PORT || 5000
