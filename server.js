@@ -19,6 +19,7 @@ app.use(fileupload({
 //import route
 app.use('/users', require('./routes/userRouter'));
 app.use('/api', require('./routes/uploadAvatarRouter'));
+app.use('/notes', require('./routes/noteRouter'));
 
 //Connect to MongoDB
 const URI = process.env.MONGO_URL;
@@ -27,17 +28,16 @@ mongoose.connect(URI, {
     useFindAndModify: false,
     useNewUrlParser: true,
     useUnifiedTopology: true
-},
-    (err) => {
-        if (err) throw err;
-        console.log("Connected to MongoDB.")
-    })
+}, err => {
+    if (err) throw err;
+    console.log("Connected to MongoDB.")
+})
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('cliend/build'));
+    app.use(express.static('client/build'))
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
-    });
+    })
 }
 
 

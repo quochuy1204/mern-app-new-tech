@@ -9,7 +9,9 @@ import ForgotPassword from './auth/ForgotPassword'
 import ResetPassword from './auth/ResetPassword'
 import Profile from '../body/profile/Profile'
 import EditUser from '../body/profile/EditUser'
-import Home from '../body/home/Home'
+import NoteHome from '../body/note/NoteHome'
+import NoteHomeAdmin from '../body/note/NoteHomeAdmin'
+import NoteEditAdmin from '../body/note/NoteEditAdmin'
 
 function Body() {
 
@@ -22,8 +24,14 @@ function Body() {
     return (
         <section>
             <Switch>
-                <Route path="/" component={Home} exact />
+                <Route path="/" component={NoteHome} exact />
+
+                <Route path="/note_edit_page/:id" component={isAdmin ? NoteEditAdmin : NotFound} exact />
+
+                <Route path="/note_page" component={isAdmin ? NoteHomeAdmin : NotFound} exact />
+
                 <Route path="/login" component={isLogged ? NotFound : Login} exact />
+
                 <Route path="/register" component={isLogged ? NotFound : Register} exact />
 
                 <Route path="/forgot_password" component={isLogged ? NotFound : ForgotPassword} exact />

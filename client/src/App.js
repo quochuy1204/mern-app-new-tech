@@ -5,6 +5,9 @@ import Body from './components/body/Body'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios';
 import { dispatchLogin, dispatchGetUser, fetchUser } from './redux/actions/authAction'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 function App() {
   const dispatch = useDispatch()

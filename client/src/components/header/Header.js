@@ -7,7 +7,7 @@ import axios from 'axios'
 function Header() {
     const auth = useSelector(state => state.auth)
 
-    const { user, isLogged } = auth
+    const { user, isLogged, isAdmin } = auth
 
 
     const handleLogout = async () => {
@@ -39,10 +39,14 @@ function Header() {
     return (
         <header>
             <div className="logo">
-                <h1><Link to="/">Logo</Link></h1>
+                <h1><Link to="/">Note</Link></h1>
             </div>
 
             <ul style={transForm}>
+                <li><Link to="/">Home</Link></li>
+                {
+                    isAdmin ? <li><Link to="/note_page">Note</Link></li> : <li><Link to="/"></Link></li>
+                }
                 {
                     isLogged
                         ? userLink()
